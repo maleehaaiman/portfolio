@@ -7,12 +7,6 @@ import {
   Copy,
   Check,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
-import {
-  fadeUpVariants,
-  staggerContainerVariants,
-  cardVariants,
-} from '../hooks/useScrollAnimation';
 
 interface ContactCardItem {
   id: string;
@@ -65,36 +59,21 @@ export const ContactSection: React.FC = () => {
     <section id="connect" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          className="mb-12 md:mb-16"
-          variants={fadeUpVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-        >
+        <div className="mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Contact Me
           </h2>
-        </motion.div>
+        </div>
 
         {/* Contact Cards Grid: 3 Clean Columns */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          variants={staggerContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {cards.map((card) => (
-            <motion.a
+            <a
               key={card.id}
               href={card.href}
               target={card.href.startsWith('mailto:') ? '_self' : '_blank'}
               rel={card.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-              variants={cardVariants}
-              whileHover={{ y: -8, borderColor: 'rgba(255,255,255,0.3)' }}
-              transition={{ type: 'spring', stiffness: 280, damping: 22 }}
-              className="w-full text-left rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-7 hover:bg-black/70 transition-colors duration-300 group shadow-xl block cursor-pointer flex flex-col justify-between"
+              className="w-full text-left rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-7 hover:border-white/30 hover:bg-black/70 hover:-translate-y-1.5 transition-all duration-300 group shadow-xl block cursor-pointer flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-5">
@@ -142,9 +121,9 @@ export const ContactSection: React.FC = () => {
               <div className="mt-8 pt-4 border-t border-white/10 flex items-center text-xs font-medium text-[#64CEFB] group-hover:text-white transition-colors">
                 <span>{card.href.startsWith('mailto:') ? 'Send Email' : 'Open Link'}</span>
               </div>
-            </motion.a>
+            </a>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

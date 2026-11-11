@@ -10,12 +10,6 @@ import {
   Sparkles,
   Rocket,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
-import {
-  fadeUpVariants,
-  staggerContainerVariants,
-  cardVariants,
-} from '../hooks/useScrollAnimation';
 
 interface InterestItem {
   title: string;
@@ -76,50 +70,31 @@ export const InterestsSection: React.FC = () => {
     <section id="interests" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          className="mb-12 md:mb-16"
-          variants={fadeUpVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-        >
+        <div className="mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Areas of Interest
           </h2>
-        </motion.div>
+        </div>
 
         {/* Interests Grid */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={staggerContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {interests.map((interest) => (
-            <motion.div
+            <div
               key={interest.title}
-              variants={cardVariants}
-              whileHover={{ y: -6, borderColor: 'rgba(255,255,255,0.3)' }}
-              transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-              className="rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-6 sm:p-7 hover:bg-black/70 transition-colors duration-300 group shadow-xl cursor-default"
+              className="rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-6 sm:p-7 hover:border-white/30 hover:bg-black/70 hover:-translate-y-1.5 transition-all duration-300 group shadow-xl cursor-default"
             >
-              <motion.div
-                className="w-10 h-10 rounded-2xl border border-white/10 bg-black/60 flex items-center justify-center mb-5 group-hover:border-white/30 transition-colors"
-                whileHover={{ scale: 1.15, rotate: 6 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-              >
+              <div className="w-10 h-10 rounded-2xl border border-white/10 bg-black/60 flex items-center justify-center mb-5 group-hover:border-white/30 group-hover:scale-105 transition-all">
                 {interest.icon}
-              </motion.div>
+              </div>
               <h3 className="text-white text-base sm:text-lg font-medium tracking-tight mb-2">
                 {interest.title}
               </h3>
               <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal">
                 {interest.description}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
