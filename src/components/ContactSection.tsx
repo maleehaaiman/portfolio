@@ -90,14 +90,11 @@ export const ContactSection: React.FC = () => {
   return (
     <section id="connect" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header: removed 05 // Reach Out, changed to Contact Me */}
+        {/* Section Header: context paragraph removed */}
         <div className="mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Contact Me
           </h2>
-          <p className="mt-3 text-white/80 text-sm sm:text-base max-w-xl">
-            Get in touch with me for discussions regarding Artificial Intelligence, Machine Learning initiatives, or professional collaborations.
-          </p>
         </div>
 
         {/* Contact Cards Grid */}

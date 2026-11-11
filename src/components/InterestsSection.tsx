@@ -69,14 +69,11 @@ export const InterestsSection: React.FC = () => {
   return (
     <section id="interests" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header: removed 03 // Passions */}
+        {/* Section Header: context paragraph removed */}
         <div className="mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Areas of Interest
           </h2>
-          <p className="mt-3 text-white/80 text-sm sm:text-base max-w-xl">
-            Key fields of technological innovation, exploration, and creative focus.
-          </p>
         </div>
 
         {/* Interests Grid */}
