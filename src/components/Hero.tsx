@@ -10,23 +10,13 @@ export const Hero: React.FC = () => {
     >
       {/* Main Content Area */}
       <div className="relative z-10 w-full flex-1 flex flex-col justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Section (below nav): Two-column layout on large screens, stacked on mobile */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-start pt-2 sm:pt-4">
-          {/* Left Column: Her Introduction */}
-          <div className="max-w-xl">
-            <p className="text-white/80 text-sm md:text-base leading-relaxed font-normal">
-              I am an AI/ML Engineer focused on Artificial Intelligence, Machine Learning, software development, and emerging technologies. I enjoy exploring new tools, building practical solutions, and experimenting with creative ideas.
+        {/* Top Section (below nav): Right side only AI/ML Engineer badge, top paragraph removed */}
+        <div className="w-full flex justify-end items-center pt-2 sm:pt-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-700/80 bg-black/40 backdrop-blur-md shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-[#64CEFB] animate-pulse" />
+            <p className="text-white/95 text-xs sm:text-sm font-medium tracking-wide">
+              AI/ML Engineer
             </p>
-          </div>
-
-          {/* Right Column (right-aligned on lg+) */}
-          <div className="lg:text-right">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gray-700/80 bg-black/40 backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-[#64CEFB] animate-pulse" />
-              <p className="text-white/90 text-xs sm:text-sm font-normal tracking-wide">
-                AI/ML Engineer &bull; Practical Solutions
-              </p>
-            </div>
           </div>
         </div>
 
@@ -52,7 +42,7 @@ export const Hero: React.FC = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-4 sm:mt-5 text-white/70 text-sm sm:text-base md:text-lg font-light tracking-wide max-w-lg">
+          <p className="mt-4 sm:mt-5 text-white/75 text-sm sm:text-base md:text-lg font-light tracking-wide max-w-lg">
             Focused on Machine Learning, Deep Learning, and Emerging Technologies.
           </p>
 
@@ -62,7 +52,7 @@ export const Hero: React.FC = () => {
               href="#connect"
               className="group inline-flex items-center gap-3 bg-black hover:bg-gray-900 text-white rounded-full px-6 md:px-8 py-3 md:py-4 text-sm md:text-base font-medium border border-white/20 hover:border-white/40 transition-all duration-300 shadow-2xl"
             >
-              <span>Let's Connect</span>
+              <span>Contact Me</span>
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-white transition-transform duration-300 ease-out group-hover:translate-x-1" />
             </a>
           </div>

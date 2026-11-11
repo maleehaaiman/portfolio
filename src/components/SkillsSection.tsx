@@ -42,9 +42,9 @@ export const SkillsSection: React.FC = () => {
       skills: ['Git', 'GitHub', 'Docker'],
     },
     {
-      title: 'Design Tools',
+      title: 'Design & Editing Tools',
       icon: <Figma className="w-5 h-5 text-pink-400" />,
-      skills: ['Figma', 'Gamma'],
+      skills: ['Figma', 'Gamma', 'Editing'],
     },
     {
       title: 'Productivity Tools',
@@ -56,16 +56,13 @@ export const SkillsSection: React.FC = () => {
   return (
     <section id="skills" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header: removed 02 // Capabilities */}
         <div className="mb-12 md:mb-16">
-          <span className="text-[#64CEFB] uppercase text-xs sm:text-sm font-semibold tracking-widest block mb-2">
-            02 // Capabilities
-          </span>
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Technical Skills
           </h2>
           <p className="mt-3 text-white/80 text-sm sm:text-base max-w-xl">
-            A comprehensive overview of programming languages, AI frameworks, databases, and developer tooling.
+            A comprehensive overview of programming languages, AI frameworks, databases, editing, and developer tooling.
           </p>
         </div>
 

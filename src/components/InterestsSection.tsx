@@ -69,11 +69,8 @@ export const InterestsSection: React.FC = () => {
   return (
     <section id="interests" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header: removed 03 // Passions */}
         <div className="mb-12 md:mb-16">
-          <span className="text-[#64CEFB] uppercase text-xs sm:text-sm font-semibold tracking-widest block mb-2">
-            03 // Passions
-          </span>
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Areas of Interest
           </h2>

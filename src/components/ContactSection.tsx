@@ -3,7 +3,6 @@ import {
   Linkedin,
   Github,
   Mail,
-  Figma,
   FileText,
   ArrowUpRight,
   Copy,
@@ -58,15 +57,6 @@ export const ContactSection: React.FC = () => {
       copyValue: 'aimanmaleeha17@gmail.com',
     },
     {
-      id: 'figma',
-      name: 'Figma',
-      description: 'UI/UX design files, wireframes, and prototypes.',
-      icon: <Figma className="w-6 h-6 text-pink-400" />,
-      isPlaceholder: true,
-      placeholderMessage:
-        'The official Figma profile link is being curated and will be published here soon.',
-    },
-    {
       id: 'resume',
       name: 'Resume',
       description: 'Curriculum Vitae and verified technical background.',
@@ -100,21 +90,18 @@ export const ContactSection: React.FC = () => {
   return (
     <section id="connect" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header: removed 05 // Reach Out, changed to Contact Me */}
         <div className="mb-12 md:mb-16">
-          <span className="text-[#64CEFB] uppercase text-xs sm:text-sm font-semibold tracking-widest block mb-2">
-            05 // Reach Out
-          </span>
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
-            Let's Connect
+            Contact Me
           </h2>
           <p className="mt-3 text-white/80 text-sm sm:text-base max-w-xl">
-            Get in touch for discussions regarding Artificial Intelligence, Machine Learning initiatives, or professional collaborations.
+            Get in touch with me for discussions regarding Artificial Intelligence, Machine Learning initiatives, or professional collaborations.
           </p>
         </div>
 
         {/* Contact Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {cards.map((card) => {
             const cardContent = (
               <div className="flex flex-col justify-between h-full">

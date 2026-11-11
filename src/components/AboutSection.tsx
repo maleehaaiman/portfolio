@@ -5,11 +5,8 @@ export const AboutSection: React.FC = () => {
   return (
     <section id="about" className="relative w-full py-24 sm:py-32 text-white overflow-hidden border-t border-white/10">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header: removed 01 // Profile */}
         <div className="mb-12 md:mb-16">
-          <span className="text-[#64CEFB] uppercase text-xs sm:text-sm font-semibold tracking-widest block mb-2">
-            01 // Profile
-          </span>
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             About Me
           </h2>
