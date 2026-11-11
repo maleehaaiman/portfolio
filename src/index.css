@@ -24,3 +24,17 @@
   background-color: #64CEFB;
   color: #000000;
 }
+
+@keyframes shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-shiny {
+  background-size: 200% 100% !important;
+  animation: shine 4s linear infinite !important;
+}

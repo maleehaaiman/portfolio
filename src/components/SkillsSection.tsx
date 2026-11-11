@@ -7,6 +7,12 @@ import {
   Terminal,
   FileSpreadsheet,
 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import {
+  fadeUpVariants,
+  staggerContainerVariants,
+  cardVariants,
+} from '../hooks/useScrollAnimation';
 
 interface SkillCategory {
   title: string;
@@ -19,7 +25,16 @@ export const SkillsSection: React.FC = () => {
     {
       title: 'Programming',
       icon: <Code2 className="w-5 h-5 text-[#64CEFB]" />,
-      skills: ['Python'],
+      skills: [
+        'Python',
+        'NumPy',
+        'Pandas',
+        'scikit-learn',
+        'TensorFlow',
+        'PyTorch',
+        'OpenCV',
+        'Matplotlib',
+      ],
     },
     {
       title: 'AI & Technology',
@@ -56,25 +71,44 @@ export const SkillsSection: React.FC = () => {
   return (
     <section id="skills" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header: context paragraph removed */}
-        <div className="mb-12 md:mb-16">
+        {/* Section Header */}
+        <motion.div
+          className="mb-12 md:mb-16"
+          variants={fadeUpVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Technical Skills
           </h2>
-        </div>
+        </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={staggerContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {categories.map((cat) => (
-            <div
+            <motion.div
               key={cat.title}
-              className="rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-6 sm:p-7 hover:border-white/30 hover:bg-black/70 transition-all duration-300 flex flex-col justify-between group shadow-xl"
+              variants={cardVariants}
+              whileHover={{ y: -6, borderColor: 'rgba(255,255,255,0.3)' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+              className="rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-6 sm:p-7 hover:bg-black/70 transition-colors duration-300 flex flex-col justify-between group shadow-xl cursor-default"
             >
               <div>
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="p-2.5 rounded-2xl border border-white/10 bg-black/60 group-hover:border-white/30 transition-colors">
+                  <motion.div
+                    className="p-2.5 rounded-2xl border border-white/10 bg-black/60 group-hover:border-white/30 transition-colors"
+                    whileHover={{ rotate: 8, scale: 1.1 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+                  >
                     {cat.icon}
-                  </div>
+                  </motion.div>
                   <h3 className="text-white text-lg font-medium tracking-tight">
                     {cat.title}
                   </h3>
@@ -82,18 +116,19 @@ export const SkillsSection: React.FC = () => {
 
                 <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill) => (
-                    <span
+                    <motion.span
                       key={skill}
-                      className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-normal text-white/90 bg-white/[0.06] border border-white/15 hover:border-white/30 hover:text-white transition-colors"
+                      whileHover={{ scale: 1.07, borderColor: 'rgba(100,206,251,0.5)' }}
+                      className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-normal text-white/90 bg-white/[0.06] border border-white/15 hover:text-white transition-colors cursor-default"
                     >
                       {skill}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -3,48 +3,41 @@ import {
   Linkedin,
   Github,
   Mail,
-  FileText,
   ArrowUpRight,
   Copy,
   Check,
 } from 'lucide-react';
-import { PlaceholderModal } from './PlaceholderModal';
+import { motion } from 'framer-motion';
+import {
+  fadeUpVariants,
+  staggerContainerVariants,
+  cardVariants,
+} from '../hooks/useScrollAnimation';
 
 interface ContactCardItem {
   id: string;
   name: string;
   description: string;
   icon: React.ReactNode;
-  href?: string;
-  isPlaceholder?: boolean;
-  placeholderMessage?: string;
+  href: string;
   copyValue?: string;
 }
 
 export const ContactSection: React.FC = () => {
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [modalState, setModalState] = useState<{
-    isOpen: boolean;
-    title: string;
-    message: string;
-  }>({
-    isOpen: false,
-    title: '',
-    message: '',
-  });
 
   const cards: ContactCardItem[] = [
     {
       id: 'linkedin',
       name: 'LinkedIn',
-      description: 'Connect professionally and view career updates & network.',
+      description: 'Connect professionally and view career updates, credentials & network.',
       icon: <Linkedin className="w-6 h-6 text-[#0A66C2]" />,
       href: 'https://www.linkedin.com/in/maleeha-aiman-shaik-b77268386',
     },
     {
       id: 'github',
       name: 'GitHub',
-      description: 'Explore code repositories, scripts, and technical work.',
+      description: 'Explore open-source code repositories, scripts, and technical implementations.',
       icon: <Github className="w-6 h-6 text-white" />,
       href: 'https://github.com/maleehaaiman',
     },
@@ -56,26 +49,7 @@ export const ContactSection: React.FC = () => {
       href: 'mailto:aimanmaleeha17@gmail.com',
       copyValue: 'aimanmaleeha17@gmail.com',
     },
-    {
-      id: 'resume',
-      name: 'Resume',
-      description: 'Curriculum Vitae and verified technical background.',
-      icon: <FileText className="w-6 h-6 text-emerald-400" />,
-      isPlaceholder: true,
-      placeholderMessage:
-        'The updated PDF resume link is being prepared and will be available for download here soon.',
-    },
   ];
-
-  const handleCardClick = (card: ContactCardItem) => {
-    if (card.isPlaceholder) {
-      setModalState({
-        isOpen: true,
-        title: `${card.name} (Coming Soon)`,
-        message: card.placeholderMessage || 'This link will be updated soon.',
-      });
-    }
-  };
 
   const handleCopy = (e: React.MouseEvent, id: string, text: string) => {
     e.preventDefault();
@@ -90,107 +64,88 @@ export const ContactSection: React.FC = () => {
   return (
     <section id="connect" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header: context paragraph removed */}
-        <div className="mb-12 md:mb-16">
+        {/* Section Header */}
+        <motion.div
+          className="mb-12 md:mb-16"
+          variants={fadeUpVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Contact Me
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Contact Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cards.map((card) => {
-            const cardContent = (
-              <div className="flex flex-col justify-between h-full">
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-2xl border border-white/10 bg-black/60 flex items-center justify-center group-hover:border-white/30 transition-colors">
-                      {card.icon}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {card.copyValue && (
-                        <button
-                          type="button"
-                          onClick={(e) => handleCopy(e, card.id, card.copyValue!)}
-                          className="w-8 h-8 rounded-full border border-white/15 bg-black/50 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-all"
-                          title="Copy email address"
-                          aria-label="Copy email address"
-                        >
-                          {copiedId === card.id ? (
-                            <Check className="w-3.5 h-3.5 text-emerald-400" />
-                          ) : (
-                            <Copy className="w-3.5 h-3.5" />
-                          )}
-                        </button>
-                      )}
-                      <div className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/40 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300">
-                        <ArrowUpRight className="w-4 h-4" />
-                      </div>
+        {/* Contact Cards Grid: 3 Clean Columns */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          variants={staggerContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {cards.map((card) => (
+            <motion.a
+              key={card.id}
+              href={card.href}
+              target={card.href.startsWith('mailto:') ? '_self' : '_blank'}
+              rel={card.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+              variants={cardVariants}
+              whileHover={{ y: -8, borderColor: 'rgba(255,255,255,0.3)' }}
+              transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+              className="w-full text-left rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-7 hover:bg-black/70 transition-colors duration-300 group shadow-xl block cursor-pointer flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-12 h-12 rounded-2xl border border-white/10 bg-black/60 flex items-center justify-center group-hover:border-white/30 transition-colors">
+                    {card.icon}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {card.copyValue && (
+                      <button
+                        type="button"
+                        onClick={(e) => handleCopy(e, card.id, card.copyValue!)}
+                        className="w-8 h-8 rounded-full border border-white/15 bg-black/50 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-all"
+                        title="Copy email address"
+                        aria-label="Copy email address"
+                      >
+                        {copiedId === card.id ? (
+                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        ) : (
+                          <Copy className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+                    )}
+                    <div className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/40 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300">
+                      <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
-
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-white text-lg font-medium tracking-tight">
-                      {card.name}
-                    </h3>
-                    {card.isPlaceholder && (
-                      <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full border border-amber-500/30 bg-amber-500/15 text-amber-300">
-                        Placeholder
-                      </span>
-                    )}
-                    {card.copyValue && copiedId === card.id && (
-                      <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/15 text-emerald-300">
-                        Copied!
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="text-white/75 text-sm leading-relaxed font-normal">
-                    {card.description}
-                  </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-white/10 flex items-center text-xs font-medium text-[#64CEFB] group-hover:text-white transition-colors">
-                  <span>{card.isPlaceholder ? 'View Status' : 'Open Link'}</span>
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-white text-lg font-medium tracking-tight">
+                    {card.name}
+                  </h3>
+                  {card.copyValue && copiedId === card.id && (
+                    <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/15 text-emerald-300">
+                      Copied!
+                    </span>
+                  )}
                 </div>
+
+                <p className="text-white/75 text-sm leading-relaxed font-normal">
+                  {card.description}
+                </p>
               </div>
-            );
 
-            if (card.isPlaceholder) {
-              return (
-                <button
-                  key={card.id}
-                  type="button"
-                  onClick={() => handleCardClick(card)}
-                  className="w-full text-left rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-7 hover:border-white/30 hover:bg-black/70 transition-all duration-300 group hover:-translate-y-1 shadow-xl"
-                >
-                  {cardContent}
-                </button>
-              );
-            }
-
-            return (
-              <a
-                key={card.id}
-                href={card.href}
-                target={card.href?.startsWith('mailto:') ? '_self' : '_blank'}
-                rel={card.href?.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                className="w-full text-left rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-7 hover:border-white/30 hover:bg-black/70 transition-all duration-300 group hover:-translate-y-1 shadow-xl block"
-              >
-                {cardContent}
-              </a>
-            );
-          })}
-        </div>
+              <div className="mt-8 pt-4 border-t border-white/10 flex items-center text-xs font-medium text-[#64CEFB] group-hover:text-white transition-colors">
+                <span>{card.href.startsWith('mailto:') ? 'Send Email' : 'Open Link'}</span>
+              </div>
+            </motion.a>
+          ))}
+        </motion.div>
       </div>
-
-      {/* Placeholder Modal */}
-      <PlaceholderModal
-        isOpen={modalState.isOpen}
-        onClose={() => setModalState({ isOpen: false, title: '', message: '' })}
-        title={modalState.title}
-        message={modalState.message}
-      />
     </section>
   );
 };

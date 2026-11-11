@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
 import { SkillsSection } from './components/SkillsSection';
+import { HackathonsSection } from './components/HackathonsSection';
 import { InterestsSection } from './components/InterestsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -32,6 +33,7 @@ export const App: React.FC = () => {
         <Hero />
         <AboutSection />
         <SkillsSection />
+        <HackathonsSection />
         <InterestsSection />
         <ContactSection />
       </main>
