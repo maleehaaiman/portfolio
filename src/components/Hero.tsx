@@ -21,9 +21,12 @@ export const Hero: React.FC = () => {
 
           {/* Right Column (right-aligned on lg+) */}
           <div className="lg:text-right">
-            <p className="text-white/80 text-sm md:text-base font-normal tracking-wide">
-              Practical Solutions &bull; Emerging Technologies
-            </p>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gray-700/80 bg-black/40 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[#64CEFB] animate-pulse" />
+              <p className="text-white/90 text-xs sm:text-sm font-normal tracking-wide">
+                AI/ML Engineer &bull; Practical Solutions
+              </p>
+            </div>
           </div>
         </div>
 
@@ -31,22 +34,27 @@ export const Hero: React.FC = () => {
         <div className="w-full flex flex-col items-center justify-center text-center my-auto py-8 sm:py-12">
           {/* Small uppercase text above heading */}
           <span className="uppercase text-white/80 text-xs md:text-sm tracking-tight font-medium mb-3 sm:mb-4 md:mb-6 block">
-            Artificial Intelligence &bull; Machine Learning
+            AI/ML Engineer &bull; Artificial Intelligence &bull; Machine Learning
           </span>
 
           {/* Main Heading with exact specifications */}
           <h1 className="tracking-tighter leading-[0.85] flex flex-col items-center select-none">
             {/* Line 1: In white, font-medium */}
             <span className="text-white font-medium text-5xl sm:text-7xl md:text-8xl lg:text-9xl">
-              AI / ML
+              Shaik Maleeha
             </span>
 
             {/* Line 2: Animated shiny gradient effect */}
             <ShinyText
-              text="Engineer."
+              text="Aiman."
               className="font-medium text-5xl sm:text-7xl md:text-8xl lg:text-9xl mt-1 sm:mt-2"
             />
           </h1>
+
+          {/* Subtitle */}
+          <p className="mt-4 sm:mt-5 text-white/70 text-sm sm:text-base md:text-lg font-light tracking-wide max-w-lg">
+            Focused on Machine Learning, Deep Learning, and Emerging Technologies.
+          </p>
 
           {/* CTA Button */}
           <div className="mt-8 sm:mt-10 md:mt-12">
