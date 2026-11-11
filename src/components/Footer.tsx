@@ -10,11 +10,13 @@ export const Footer: React.FC = () => {
     <footer className="w-full py-12 bg-black/75 backdrop-blur-md text-white border-t border-white/10 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Brand Info */}
+          {/* Brand Info with Heart Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center">
-              <div className="w-2.5 h-2.5 rounded-full bg-white" />
-            </div>
+            <img
+              src="./heart-logo.png"
+              alt="Heart Logo"
+              className="w-7 h-7 object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
+            />
             <div>
               <p className="text-white font-medium text-sm">
                 Shaik Maleeha Aiman

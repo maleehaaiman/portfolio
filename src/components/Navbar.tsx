@@ -16,13 +16,14 @@ export const Navbar: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-6">
         <div className="flex items-center justify-between">
-          {/* Logo container directly before name */}
+          {/* Logo with Heart part only before name */}
           <a href="#home" className="flex items-center gap-3 group">
-            <div
-              id="brand-logo"
-              className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center transition-transform group-hover:scale-105 overflow-hidden bg-black/40 shadow-sm"
-            >
-              <div className="w-2.5 h-2.5 rounded-full bg-white" />
+            <div className="flex items-center justify-center transition-transform group-hover:scale-105">
+              <img
+                src="./heart-logo.png"
+                alt="Heart Logo"
+                className="w-8 h-8 object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.35)]"
+              />
             </div>
             <span className="text-white font-medium text-base sm:text-lg tracking-tight">
               Shaik Maleeha Aiman
