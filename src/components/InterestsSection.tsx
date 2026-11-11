@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import {
   Brain,
   Bot,
@@ -70,18 +71,32 @@ export const InterestsSection: React.FC = () => {
     <section id="interests" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-12 md:mb-16">
+        <motion.div
+          className="mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Areas of Interest
           </h2>
-        </div>
+        </motion.div>
 
         {/* Interests Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {interests.map((interest) => (
-            <div
+          {interests.map((interest, index) => (
+            <motion.div
               key={interest.title}
               className="rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-6 sm:p-7 hover:border-white/30 hover:bg-black/70 hover:-translate-y-1.5 transition-all duration-300 group shadow-xl cursor-default"
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{
+                duration: 0.55,
+                ease: [0.16, 1, 0.3, 1],
+                delay: (index % 3) * 0.1,
+              }}
             >
               <div className="w-10 h-10 rounded-2xl border border-white/10 bg-black/60 flex items-center justify-center mb-5 group-hover:border-white/30 group-hover:scale-105 transition-all">
                 {interest.icon}
@@ -92,7 +107,7 @@ export const InterestsSection: React.FC = () => {
               <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal">
                 {interest.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

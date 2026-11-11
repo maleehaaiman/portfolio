@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   Linkedin,
   Github,
@@ -59,21 +60,35 @@ export const ContactSection: React.FC = () => {
     <section id="connect" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-12 md:mb-16">
+        <motion.div
+          className="mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Contact Me
           </h2>
-        </div>
+        </motion.div>
 
         {/* Contact Cards Grid: 3 Clean Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {cards.map((card) => (
-            <a
+          {cards.map((card, index) => (
+            <motion.a
               key={card.id}
               href={card.href}
               target={card.href.startsWith('mailto:') ? '_self' : '_blank'}
               rel={card.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-              className="w-full text-left rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-7 hover:border-white/30 hover:bg-black/70 hover:-translate-y-1.5 transition-all duration-300 group shadow-xl block cursor-pointer flex flex-col justify-between"
+              className="w-full text-left rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-7 hover:border-white/30 hover:bg-black/70 hover:-translate-y-1.5 transition-all duration-300 group shadow-xl flex flex-col justify-between cursor-pointer"
+              initial={{ opacity: 0, y: 50, scale: 0.92 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+                delay: index * 0.12,
+              }}
             >
               <div>
                 <div className="flex items-center justify-between mb-5">
@@ -121,7 +136,7 @@ export const ContactSection: React.FC = () => {
               <div className="mt-8 pt-4 border-t border-white/10 flex items-center text-xs font-medium text-[#64CEFB] group-hover:text-white transition-colors">
                 <span>{card.href.startsWith('mailto:') ? 'Send Email' : 'Open Link'}</span>
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>

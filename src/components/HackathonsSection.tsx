@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Trophy, Award, CheckCircle2 } from 'lucide-react';
 
 export const HackathonsSection: React.FC = () => {
@@ -32,21 +33,35 @@ export const HackathonsSection: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-12 md:mb-16">
+        <motion.div
+          className="mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
-            Hackathons & Workshops
+            Hackathons &amp; Workshops
           </h2>
           <p className="mt-3 text-white/70 text-sm sm:text-base max-w-xl font-light">
             Demonstrated practical experience, rapid engineering capabilities, and continuous skill advancement through competitive hackathons and immersive technical workshops.
           </p>
-        </div>
+        </motion.div>
 
         {/* Counter Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {counters.map((item) => (
-            <div
+          {counters.map((item, index) => (
+            <motion.div
               key={item.id}
               className="relative rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-8 sm:p-10 hover:border-white/30 hover:bg-black/70 hover:-translate-y-1.5 transition-all duration-300 shadow-2xl overflow-hidden group cursor-default"
+              initial={{ opacity: 0, y: 60, scale: 0.92 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.7,
+                ease: [0.16, 1, 0.3, 1],
+                delay: index * 0.15,
+              }}
             >
               <div
                 className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${item.highlightColor}`}
@@ -64,11 +79,21 @@ export const HackathonsSection: React.FC = () => {
               </div>
 
               {/* Big Counter Number */}
-              <div className="flex items-baseline gap-2 mb-3">
+              <motion.div
+                className="flex items-baseline gap-2 mb-3"
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: index * 0.15 + 0.3,
+                }}
+              >
                 <span className="text-6xl sm:text-7xl font-bold tracking-tight text-white group-hover:text-[#64CEFB] transition-colors">
                   {item.count}
                 </span>
-              </div>
+              </motion.div>
 
               {/* Title / Label */}
               <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-white mb-3">
@@ -79,7 +104,7 @@ export const HackathonsSection: React.FC = () => {
               <p className="text-white/75 text-sm sm:text-base leading-relaxed font-normal">
                 {item.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
