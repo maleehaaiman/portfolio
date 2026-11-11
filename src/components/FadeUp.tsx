@@ -39,3 +39,4 @@ export const FadeUp: React.FC<FadeUpProps> = ({
 };
 
 export default FadeUp;
+

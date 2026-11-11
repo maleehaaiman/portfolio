@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import { useInView, motion } from 'framer-motion';
+import React from 'react';
 import { Code2, Brain, Database, Figma, Terminal, FileSpreadsheet } from 'lucide-react';
 
 interface SkillCategory {
@@ -9,9 +8,6 @@ interface SkillCategory {
 }
 
 export const SkillsSection: React.FC = () => {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, amount: 0.3 });
-
   const categories: SkillCategory[] = [
     {
       title: 'Programming',
@@ -49,58 +45,43 @@ export const SkillsSection: React.FC = () => {
     <section id="skills" className="relative w-full py-24 sm:py-32 text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <motion.div
-          ref={headerRef}
-          className="mb-12 md:mb-16"
-          animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <div className="mb-12 md:mb-16 pop-up">
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white">
             Technical Skills
           </h2>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((cat, index) => (
-            <SkillCard key={cat.title} cat={cat} index={index} />
+            <div
+              key={cat.title}
+              className="rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-6 sm:p-7 hover:border-white/30 hover:bg-black/70 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group shadow-xl cursor-default pop-up"
+              data-delay={String(index + 1)}
+            >
+              <div>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="p-2.5 rounded-2xl border border-white/10 bg-black/60 group-hover:border-white/30 group-hover:scale-105 transition-all">
+                    {cat.icon}
+                  </div>
+                  <h3 className="text-white text-lg font-medium tracking-tight">{cat.title}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-normal text-white/90 bg-white/[0.06] border border-white/15 hover:border-[#64CEFB]/40 hover:text-white transition-all cursor-default"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
       </div>
     </section>
-  );
-};
-
-const SkillCard: React.FC<{ cat: { title: string; icon: React.ReactNode; skills: string[] }; index: number }> = ({ cat, index }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
-  return (
-    <motion.div
-      ref={ref}
-      className="rounded-3xl border border-white/15 bg-black/60 backdrop-blur-xl p-6 sm:p-7 hover:border-white/30 hover:bg-black/70 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group shadow-xl cursor-default"
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: (index % 3) * 0.1 }}
-    >
-      <div>
-        <div className="flex items-center gap-3 mb-5">
-          <div className="p-2.5 rounded-2xl border border-white/10 bg-black/60 group-hover:border-white/30 group-hover:scale-105 transition-all">
-            {cat.icon}
-          </div>
-          <h3 className="text-white text-lg font-medium tracking-tight">{cat.title}</h3>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {cat.skills.map((skill) => (
-            <span
-              key={skill}
-              className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-normal text-white/90 bg-white/[0.06] border border-white/15 hover:border-[#64CEFB]/40 hover:text-white transition-all cursor-default"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
   );
 };
 

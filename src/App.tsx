@@ -7,8 +7,10 @@ import { HackathonsSection } from './components/HackathonsSection';
 import { InterestsSection } from './components/InterestsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { usePopUpAnimation } from './hooks/useScrollAnimation';
 
 export const App: React.FC = () => {
+  usePopUpAnimation();
   return (
     <div className="relative w-full min-h-screen text-white font-sans antialiased selection:bg-[#64CEFB] selection:text-black">
       {/* Full-screen looping video background - fixed across entire page, bright and crystal clear! */}

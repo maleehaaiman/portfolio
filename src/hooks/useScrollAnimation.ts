@@ -1,11 +1,22 @@
-import { useRef } from 'react';
-import { useInView } from 'framer-motion';
+import { useEffect } from 'react';
 
-export function useScrollAnimation(options?: { amount?: number; once?: boolean }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, {
-    amount: options?.amount ?? 0.15,
-    once: options?.once ?? true,
-  });
-  return { ref, isInView };
+export function usePopUpAnimation() {
+  useEffect(() => {
+    const els = document.querySelectorAll('.pop-up');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target); // fire once
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 }
