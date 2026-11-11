@@ -17,10 +17,10 @@ export const Footer: React.FC = () => {
             </div>
             <div>
               <p className="text-white font-medium text-sm">
-                DesignPro
+                Shaik Maleeha Aiman
               </p>
               <p className="text-white/60 text-xs font-mono">
-                AI/ML Engineer Portfolio
+                AI/ML Engineer
               </p>
             </div>
           </div>

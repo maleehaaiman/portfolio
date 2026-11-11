@@ -7,10 +7,9 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Home', href: '#home' },
     { label: 'About Us', href: '#about' },
-    { label: 'Courses', href: '#skills' },
-    { label: 'Instructors', href: '#interests' },
-    { label: 'Testimonials', href: '#certifications' },
-    { label: 'Blog', href: '#certifications' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Interests', href: '#interests' },
+    { label: 'Certifications', href: '#certifications' },
     { label: 'Contact us', href: '#connect', hasArrow: true },
   ];
 
@@ -18,13 +17,13 @@ export const Navbar: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-6">
         <div className="flex items-center justify-between">
-          {/* Logo: Circular design with white border (2px), containing smaller filled white circle inside, followed by "DesignPro" text */}
+          {/* Logo: Circular design with white border (2px), containing smaller filled white circle inside, followed by Name / Title */}
           <a href="#home" className="flex items-center gap-3 group">
             <div className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center transition-transform group-hover:scale-105">
               <div className="w-2.5 h-2.5 rounded-full bg-white" />
             </div>
-            <span className="text-white font-medium text-lg tracking-tight">
-              DesignPro
+            <span className="text-white font-medium text-base sm:text-lg tracking-tight">
+              Shaik Maleeha Aiman
             </span>
           </a>
 
