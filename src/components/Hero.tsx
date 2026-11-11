@@ -14,12 +14,12 @@ export const Hero: React.FC = () => {
 
         {/* Center Hero Section with the Darker Heart Logo */}
         <div className="w-full flex flex-col items-center justify-center text-center my-auto py-8 sm:py-16">
-          {/* Prominent Heart Logo at Head Part */}
+          {/* Prominent White Heart Logo at Head Part - Large */}
           <div className="flex items-center justify-center mb-8 sm:mb-10 transition-transform duration-500 hover:scale-105">
             <img
               src="./heart-logo.png"
               alt="Heart Logo"
-              className="w-36 h-28 sm:w-48 sm:h-36 md:w-60 md:h-44 object-contain filter drop-shadow-[0_0_3px_rgba(255,255,255,0.7)] drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
+              className="w-56 h-40 sm:w-72 sm:h-52 md:w-96 md:h-64 lg:w-[480px] lg:h-80 object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.6)] drop-shadow-[0_4px_60px_rgba(100,206,251,0.3)]"
             />
           </div>
 
